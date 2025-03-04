@@ -718,46 +718,38 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Preloader (Revolving Dots)
+# Preloader
 --------------------------------------------------------------*/
 #preloader {
   position: fixed;
   inset: 0;
   z-index: 999999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
   background: var(--background-color);
   transition: all 0.6s ease-out;
 }
 
-/* Dots container */
-.preloader-dots {
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-/* Individual dots */
-.preloader-dots div {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: var(--accent-color);
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
   border-radius: 50%;
-  animation: revolve 1.5s linear infinite;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
 }
 
-/* Positioning the dots */
-.preloader-dots div:nth-child(1) { top: 0; left: 50%; animation-delay: 0s; }
-.preloader-dots div:nth-child(2) { top: 50%; right: 0; animation-delay: 0.2s; }
-.preloader-dots div:nth-child(3) { bottom: 0; left: 50%; animation-delay: 0.4s; }
-.preloader-dots div:nth-child(4) { top: 50%; left: 0; animation-delay: 0.6s; }
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
 
-/* Keyframes for revolving effect */
-@keyframes revolve {
-  0% { transform: rotate(0deg) translate(30px) rotate(0deg); }
-  100% { transform: rotate(360deg) translate(30px) rotate(-360deg); }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*--------------------------------------------------------------

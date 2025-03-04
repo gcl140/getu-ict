@@ -67,6 +67,7 @@
       preloader.remove();
     });
   }
+  
 
   /**
    * Scroll top button
